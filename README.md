@@ -20,3 +20,11 @@ async def generate_checksum(data: TextInput):
 @app.get("/")
 async def welcome():
     return {"message": "Welcome to the API, this is [Dhiraj Thakur]'s FastAPI project!"}
+@app.post("/generate")
+async def generate_checksum(data: TextInput):
+    """
+    This endpoint accepts a POST request with a JSON body containing a field "text".
+    It returns the SHA256 checksum of the text provided.
+    """
+    checksum = sha256(data.text.encode()).hexdigest()
+    return {"checksum": checksum}
