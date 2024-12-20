@@ -40,3 +40,13 @@ def test_generate_checksum():
 
     checksum = sha256(data.text.encode()).hexdigest()
     return {"checksum": checksum}
+
+3. Access the API at `http://127.0.0.1:8000`.
+
+## API Endpoints
+
+### GET `/`
+Returns a welcome message.
+
+### POST `/generate`
+Accepts a JSON body with a field `text` and returns the checksum of the text.
