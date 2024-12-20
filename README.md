@@ -16,3 +16,7 @@ app = FastAPI()
 async def generate_checksum(data: TextInput):
     checksum = sha256(data.text.encode()).hexdigest()
     return {"checksum": checksum}
+    
+@app.get("/")
+async def welcome():
+    return {"message": "Welcome to the API, this is [Dhiraj Thakur]'s FastAPI project!"}
