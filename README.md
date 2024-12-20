@@ -26,5 +26,17 @@ async def generate_checksum(data: TextInput):
     This endpoint accepts a POST request with a JSON body containing a field "text".
     It returns the SHA256 checksum of the text provided.
     """
+
+    # GitHub Copilot, please create test cases for the /generate endpoint using FastAPI's test client.
+
+from fastapi.testclient import TestClient
+
+client = TestClient(app)
+
+def test_generate_checksum():
+    response = client.post("/generate", json={"text": "Hello World"})
+    assert response.status_code == 200
+    assert "checksum" in response.json()
+
     checksum = sha256(data.text.encode()).hexdigest()
     return {"checksum": checksum}
